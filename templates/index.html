@@ -1,6 +1,26 @@
 {% extends "template.html" %}
 {% block conteudo %}
 
-        <h1>{{ app_title }}</h1>
+<h1>{{ page_title }}</h1>
+
+<table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+            <tr>
+                <th>ID</th>
+                <th>Alimento</th>
+                <th>Vencimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for food in foods %}
+            <tr>
+                <td>{{ food.id }}</td>
+                <td>{{ food.food }}</td>
+                <td>{{ food.expiration }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
 
 {% endblock %}

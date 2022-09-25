@@ -1,4 +1,4 @@
-# ALURA FLASK NOTEBOOK #1
+# ALURA FLASK NOTEBOOK
 
 ## Introdução
 
@@ -30,13 +30,13 @@ venv\Scripts\activate
 - MySQL: v8.0.28
 - mysql-connector-python: v8.0.28
 - Flask-SQLAlchemy: v2.5.1
-- Flask-Bcrypt: v0.7.1
+- Flask-Bcrypt: v1.0.1
 
 ```bash
 pip install flask==2.0.2
 pip install mysql-connector-python==8.0.28
 pip install flask-sqlalchemy==2.5.1
-pip install flask-bcrypt==0.7.1
+pip install flask-bcrypt==1.0.1
 ```
 
 <aside>
@@ -46,11 +46,15 @@ O arquivo deve ser inserido na pasta “static”
 
 </aside>
 
-### Criar o .gitignore
+### Leia mais
 
-Para criação do gitignore foi utilizado o site [https://www.toptal.com/developers/gitignore](https://www.toptal.com/developers/gitignore) com as variáveis git, flask, python e visualstudiocode
+[Gitignore Anotações](/docs/gitignore_anotacoes.md)
+
+[Criar DB Anotações](/docs/criar_db_anotacoes.md)
 
 ## Criando a aplicação [Em construção 🏗️]
+
+[Jinja Anotações](/docs/jinja_anotacoes.md)
 
 ### Criar a estrutura da aplicação
 
@@ -68,6 +72,10 @@ Para criação do gitignore foi utilizado o site [https://www.toptal.com/develop
 
 ## Referências Bibliográficas
 
-Alura. Flask: avançando no desenvolvimento web com Python. <[https://cursos.alura.com.br/course/flask-desenvolvimento-web](https://cursos.alura.com.br/course/flask-desenvolvimento-web)> - acessado em 12/09/2022
+Alura. Flask: avançando no desenvolvimento web com Python. <[https://cursos.alura.com.br/course/flask-desenvolvimento-web](https://cursos.alura.com.br/course/flask-desenvolvimento-web)> - acessado em 12/09/2022.
 
-Relbeits. ****Hospedagem MySQL Online de Graça e Sem Tempo Limite - Heroku <[https://youtu.be/6ffRYRqt4uc](https://youtu.be/6ffRYRqt4uc)> - acessado em 12/09/2022
+Documentação MySql para desenvolvedores Pytho. <[https://dev.mysql.com/doc/connector-python/en/connector-python-tutorial-cursorbuffered.html](https://dev.mysql.com/doc/connector-python/en/connector-python-tutorial-cursorbuffered.html)> - acessado em 25/09/2022. 
+
+Relbeits. ****Hospedagem MySQL Online de Graça e Sem Tempo Limite - Heroku <[https://youtu.be/6ffRYRqt4uc](https://youtu.be/6ffRYRqt4uc)> - acessado em 12/09/2022.
+
+Stackoverflow. Create table with date column. <[https://stackoverflow.com/questions/28041953/create-table-with-date-column](https://stackoverflow.com/questions/28041953/create-table-with-date-column)> - acessado em 25/09/2022
