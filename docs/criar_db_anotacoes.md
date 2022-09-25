@@ -171,9 +171,9 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-### Config.py
+### models.py
 
-O [config.py](http://config.py) deverá seguir os mesmos parâmetros do bd inseridos no arquivo que criou o banco de dados
+O models.py deverá seguir os mesmos parâmetros do bd inseridos no arquivo que criou o banco de dados
 
 ```python
 from app import db
