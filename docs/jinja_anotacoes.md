@@ -53,3 +53,36 @@ No arquivo de views, o código ficará da seguinte forma:
 def home():
     return render_template('index.html', app_title='ola mundo')
 ```
+
+### Notificações do Bootstrap no Jinja
+
+Inserir no template.html o seguinte bloco:
+
+```html
+<body>
+        <div class="container">
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul id="messages" class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="alert alert-success">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+				</div>
+</body>
+```
+
+A partir dai, já é possível utilizar o método flash no código python
+
+```python
+from flask import render_template, request, redirect, session, flash, url_for
+from jogoteca import app, db
+from models import Jogos, Usuarios
+
+flash('Olá Mundo!')
+        
+```

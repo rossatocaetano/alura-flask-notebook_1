@@ -6,6 +6,8 @@ Após concluir os estudos do curso de Flask da Alura, senti a necessidade de org
 
 **Proposta para este exercício:** Criar um web app que seja capaz de realizar operações CRUD apenas de textos, com senhas criptografadas.
 
+*Observação: Neste momento não será utilizado o Flask-WTF*
+
 **Tema do Web App escolhido:** Realizar um utilitário doméstico para controle do vencimento de alimentos adquiridos 
 
 ## Preparando o ambiente
@@ -48,13 +50,15 @@ O arquivo deve ser inserido na pasta “static”
 
 ### Leia mais
 
-[Gitignore Anotações](/docs/gitignore_anotacoes.md)
+[Gitignore Anotações]('/../docs/gitignore_anotacoes.md')
 
-[Criar DB Anotações](/docs/criar_db_anotacoes.md)
+[Criar DB Anotações]('/../docs/criar_db_anotacoes.md)
 
 ## Criando a aplicação [Em construção 🏗️]
 
-[Jinja Anotações](/docs/jinja_anotacoes.md)
+[Jinja Anotações]('/../docs/jinja_anotacoes.md')
+
+[CRUD Anotações]('/../docs/crud_anotacoes.md)
 
 ### Criar a estrutura da aplicação
 
