@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<h1>{{ page_title }}</h1>
+
+<form action="{{ url_for('update_register') }}" method="post">
+    <!-- O campo hidden servirá para fazer a query do valor que será atualizado no views do CRUD -->
+    <input type="hidden" name="id" value="{{ food.id }}"
+    
+    <label for="food">Nome do alimento:</label>
+    <input type="text" name="food" value="{{ food.food }}">
+
+    <label for="expiration">Data de vencimento:</label>
+    <input type="date" name="expiration" value="{{ food.expiration }}">
+
+    <input type="submit">
+</form>
+
+{% endblock %}

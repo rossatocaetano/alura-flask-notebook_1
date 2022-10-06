@@ -11,6 +11,7 @@
                 <th>ID</th>
                 <th>Alimento</th>
                 <th>Vencimento</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
                 <td>{{ food.id }}</td>
                 <td>{{ food.food }}</td>
                 <td>{{ food.expiration }}</td>
+                <td><a href="{{ url_for('update_page', id=food.id) }}">Editar</a></td>
             </tr>
             {% endfor %}
 

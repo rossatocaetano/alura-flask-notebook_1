@@ -96,3 +96,67 @@ def index():
 ```
 
 A conexão com o banco de dados dependem dos arquivos models.py, [app.py](http://app.py) e config.py, que é mencionado no arquivo [Criar DB Anotações](/docs/criar_db_anotacoes.md).
+
+
+### UPDATE: Atualizar registro
+
+No arquivo Jinja index.html, é preciso criar o campo de editar, fazer referência a pagina de edição e também ao ID que irá ser editado ao entrar naquela página
+
+```html
+<tbody>
+            {% for food in foods %}
+            <tr>
+                <td>{{ food.id }}</td>
+                <td>{{ food.food }}</td>
+                <td>{{ food.expiration }}</td>
+                <td><a href="{{ url_for('update_page', id=food.id) }}">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+```
+
+No arquivo de views do CRUD é preciso capturar o ID para que seja passado ao Jinja que irá editar o conteúdo
+
+```python
+# --- UPDATE ----
+@app.route('/update/<int:id>')
+def update_page(id):
+    #filtrar a o id que foi passada ao clicar no editar do index e capturar as informações deste registro
+    food = Foods.query.filter_by(id=id).first()
+    #retornar a página de edição e possibilitar que as informações filtradas sejam exibidas nesta página
+    return render_template('update.html', page_title="Registrar novo alimento", food=food)
+```
+
+No arquivo Jinja update.html é preciso criar o formulário já com os values que irão ser atualizados ao clicar e com o campo que importará o id para fazer a query no próximo caminho
+
+```python
+<form action="{{ url_for('update_register') }}" method="post">
+    <!-- O campo hidden servirá para fazer a query do valor que será atualizado no views do CRUD -->
+    <input type="hidden" name="id" value="{{ food.id }}"
+    
+    <label for="food">Nome do alimento:</label>
+    <input type="text" name="food" value="{{ food.food }}">
+
+    <label for="expiration">Data de vencimento:</label>
+    <input type="date" name="expiration" value="{{ food.expiration }}">
+
+    <input type="submit">
+</form>
+```
+
+Depois é necessário criar a função no arquivo de views do Food que está referenciada no form action do Jinja
+
+```python
+@app.route('/update_register', methods=['POST',])
+def update_register():
+    #buscar o id que foi passado na página update da função update_form
+    food = Foods.query.filter_by(id=request.form['id']).first()
+    #atualizar os valores
+    food.food = request.form['food']
+    food.expiration = request.form['expiration']
+    #registrar as alterações
+    db.session.add(food)
+    db.session.commit()
+    #retornar para página inicial
+    return redirect(url_for('index'))
+```
