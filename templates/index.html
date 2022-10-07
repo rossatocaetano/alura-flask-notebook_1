@@ -20,7 +20,10 @@
                 <td>{{ food.id }}</td>
                 <td>{{ food.food }}</td>
                 <td>{{ food.expiration }}</td>
-                <td><a href="{{ url_for('update_page', id=food.id) }}">Editar</a></td>
+                <td>
+                    <a href="{{ url_for('update_page', id=food.id) }}">Editar</a>
+                    <a href="{{ url_for('delete_register', id=food.id) }}">Deletar</a>
+                </td>
             </tr>
             {% endfor %}
 

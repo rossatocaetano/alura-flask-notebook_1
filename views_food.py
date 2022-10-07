@@ -50,7 +50,7 @@ def update_page(id):
 
 @app.route('/update_register', methods=['POST',])
 def update_register():
-    #buscar o id que foi passada na página update da função update_form
+    #buscar o id que foi passado na página update da função update_form
     food = Foods.query.filter_by(id=request.form['id']).first()
     #atualizar os valores
     food.food = request.form['food']
@@ -59,4 +59,13 @@ def update_register():
     db.session.add(food)
     db.session.commit()
     #retornar para página inicial
+    return redirect(url_for('index'))
+
+
+# --- DELETE ---
+@app.route('/delete/<int:id>')
+def delete_register(id):
+    Foods.query.filter_by(id=id).delete()
+    db.session.commit()
+    flash('Registro deletado com sucesso')
     return redirect(url_for('index'))

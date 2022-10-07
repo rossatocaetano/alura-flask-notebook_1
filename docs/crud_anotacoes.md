@@ -160,3 +160,31 @@ def update_register():
     #retornar para página inicial
     return redirect(url_for('index'))
 ```
+
+### Delete: deletar um registro
+
+Primeiro, é necessário criar o link para deletar no Jinja
+
+```html
+<tr>
+	<td>{{ food.id }}</td>
+	<td>{{ food.food }}</td>
+	<td>{{ food.expiration }}</td>
+	<td>
+		<a href="{{ url_for('update_page', id=food.id) }}">Editar</a>
+		<a href="{{ url_for('delete_register', id=food.id) }}">Deletar</a>
+	</td>
+</tr>
+```
+
+Depois, é necessário criar a rota no arquivo de views do CRUD
+
+```python
+# --- DELETE ---
+@app.route('/delete/<int:id>')
+def delete_register(id):
+    Foods.query.filter_by(id=id).delete()
+    db.session.commit()
+    flash('Registro deletado com sucesso')
+    return redirect(url_for('index'))
+```
