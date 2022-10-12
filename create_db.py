@@ -39,7 +39,7 @@ TABLES['Users'] = ('''
       CREATE TABLE `users` (
       `name` varchar(20) NOT NULL,
       `nickname` varchar(8) NOT NULL,
-      `senha` varchar(100) NOT NULL,
+      `password` varchar(100) NOT NULL,
       PRIMARY KEY (`nickname`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
@@ -58,9 +58,10 @@ for tabela_nome in TABLES:
 
 
 # inserindo users
-user_sql = 'INSERT INTO users (name, nickname, senha) VALUES (%s, %s, %s)'
+user_sql = 'INSERT INTO users (name, nickname, password) VALUES (%s, %s, %s)'
 users = [
       ("Administrador", "admin", generate_password_hash("root123").decode('utf-8')),
+      #generate password hash gera uma senha que precisa de um hash para descriptografar
       ("Administrador2", "admin2", generate_password_hash("root456").decode('utf-8'))
 ]
 cursor.executemany(user_sql, users)

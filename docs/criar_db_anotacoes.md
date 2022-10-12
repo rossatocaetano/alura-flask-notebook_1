@@ -72,7 +72,7 @@ TABLES['Users'] = ('''
       CREATE TABLE `users` (
       `name` varchar(20) NOT NULL,
       `nickname` varchar(8) NOT NULL,
-      `senha` varchar(100) NOT NULL,
+      `password` varchar(100) NOT NULL,
       PRIMARY KEY (`nickname`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
@@ -94,9 +94,10 @@ Passo 4 - Inserindo valores na tabela users:
 
 ```python
 # inserindo users
-user_sql = 'INSERT INTO users (name, nickname, senha) VALUES (%s, %s, %s)'
+user_sql = 'INSERT INTO users (name, nickname, password) VALUES (%s, %s, %s)'
 users = [
-      ("Administrador", "admin", generate_password_hash("root123").decode('utf-8')),
+      ("Administrador", "admin", generate_password_hash("root123").decode('utf-8')), 
+#generate password hash gera uma senha que precisa de um hash para descriptografar
       ("Administrador2", "admin2", generate_password_hash("root456").decode('utf-8'))
 ]
 cursor.executemany(user_sql, users)
@@ -171,9 +172,9 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-### models.py
+### Config.py
 
-O models.py deverá seguir os mesmos parâmetros do bd inseridos no arquivo que criou o banco de dados
+O [config.py](http://config.py) deverá seguir os mesmos parâmetros do bd inseridos no arquivo que criou o banco de dados
 
 ```python
 from app import db
