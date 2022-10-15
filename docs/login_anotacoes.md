@@ -54,7 +54,7 @@ def login():
 
 # --- Rota para autenticar as informações inseridas na página de Login
 @app.route('/authenticate', methods=['POST',])
-def autenticar():
+def authenticate():
     #capturar as informações solicitadas pelo usuário
     user = Users.query.filter_by(nickname=request.form['user']).first()
     password = check_password_hash(user.password, request.form['password']) #verificando a hash da senha criptografada

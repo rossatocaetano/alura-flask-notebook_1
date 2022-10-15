@@ -1,8 +1,9 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 from app import app, db
 from models import Foods
 
 # --- READ ---
+@app.route('/index')
 @app.route('/')
 def index():
     page_title = 'SHELF LIFE WEB APP'
@@ -13,6 +14,9 @@ def index():
 # --- CREATE ---
 @app.route('/new')
 def new_register():
+    #proteger a rota
+    if 'user_logged' not in session or session['user_logged'] == None:
+        return redirect(url_for('login', next_page=url_for('new_register')))
     return render_template('new.html', page_title="Registrar novo alimento")
 
 
@@ -42,6 +46,8 @@ def create_register():
 # --- UPDATE ----
 @app.route('/update/<int:id>')
 def update_page(id):
+    if 'user_logged' not in session or session['user_logged'] == None:
+        return redirect(url_for('login', next_page=url_for('update_page', id=id)))
     #filtrar a o id que foi passada ao clicar no editar do index e capturar as informações deste registro
     food = Foods.query.filter_by(id=id).first()
     #retornar a página de edição e possibilitar que as informações filtradas sejam exibidas nesta página
@@ -65,6 +71,8 @@ def update_register():
 # --- DELETE ---
 @app.route('/delete/<int:id>')
 def delete_register(id):
+    if 'user_logged' not in session or session['user_logged'] == None:
+        return redirect(url_for('login'))
     Foods.query.filter_by(id=id).delete()
     db.session.commit()
     flash('Registro deletado com sucesso')

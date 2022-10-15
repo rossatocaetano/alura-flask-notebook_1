@@ -62,6 +62,8 @@ O arquivo deve ser inserido na pasta “static”
 
 [Login Anotações](/docs/login_anotacoes.md)
 
+[Protegendo o CRUD](/docs/protegendo_o_crud_anotacoes.md)
+
 ### Criar a estrutura da aplicação
 
 - config.py [irá receber as configurações necessárias para o funcionamento do app]
